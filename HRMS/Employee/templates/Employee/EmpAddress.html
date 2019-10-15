@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Address</title>
+<style>
+fieldset{ margin-bottom: 5%; }
+</style>
+</head>
+
+<body>
+<h1>Employee Address Form</h1>
+<form method="post" action="{% url 'Employee:EmpAddress' %}">
+{% csrf_token %}
+<fieldset>
+<legend><b>Primary Address</b></legend>
+<label for ="primaryaddress">eid:</label>
+<input type = "text" name = "eid" id = "primaryeid" required><br/>
+<label for ="primaryaddress">Address1:</label>
+<input type = "text" name = "Address1" id = "primaryAddress1" required><br/>
+<label for ="primaryaddress">Address2:</label>
+<input type = "text" name = "Address2" id = "primaryAddress2" required><br/>
+<label for = "primaryzip">zip code:</label>
+<input type = "text" name = "zip code" id = "primaryzip"
+                  pattern = "[0-9]{6}" required><br/>
+<label for ="primaryaddress">city:</label>
+<input type = "text" name = "city" id = "primarycity" required><br/>
+<label for ="primaryaddress">country:</label>
+<input type = "text" name = "country" id = "primarycountry" required><br/>
+<label for ="primaryaddress">contact_number:</label>
+<input type = "text" name = "contact_number" id = "primarycontact_number" required><br/>
+</fieldset>
+
+<input type="checkbox" id="same" name="same" onchange= "addressFunction()"/>
+<label for = "same">If same Permanent address select this box.</label>
+
+<fieldset>
+<legend><b>Permanent Address</b></legend>
+<label for ="permanentaddress">eid:</label>
+<input type = "text" name = "eid" id = "permanenteid" required><br/>
+<label for ="permanentaddress">Address1:</label>
+<input type = "text" name = "Address1" id = "permanentAddress1" required><br/>
+<label for ="permanentaddress">Address2:</label>
+<input type = "text" name = "Address2" id = "permanentAddress2" required><br/>
+<label for = "permanentzip">zip code:</label>
+<input type = "text" name = "zip code" id = "permanentzip"
+                  pattern = "[0-9]{6}" required><br/>
+<label for ="permanentaddress">city:</label>
+<input type = "text" name = "city" id = "permanentcity" required><br/>
+<label for ="permanentaddress">country:</label>
+<input type = "text" name = "country" id = "permanentcountry" required><br/>
+<label for ="permanentaddress">contact_number:</label>
+<input type = "text" name = "contact_number" id = "permanentcontact_number" required><br/>
+<input type = "submit" value = "Submit"/>
+</fieldset>
+
+</form>
+
+<script>
+function addressFunction()
+{
+  if (document.getElementById('same').checked)
+  {
+    document.getElementById('permanenteid').value=document.
+             getElementById('primaryeid').value;
+    document.getElementById('permanentAddress1').value=document.
+             getElementById('primaryAddress1').value;
+    document.getElementById('permanentAddress2').value=document.
+             getElementById('primaryAddress2').value;
+    document.getElementById('permanentzip').value=document.
+             getElementById('primaryzip').value;
+    document.getElementById('permanentcity').value=document.
+             getElementById('primarycity').value;
+    document.getElementById('permanentcountry').value=document.
+             getElementById('primarycountry').value;
+    document.getElementById('permanentcontact_number').value=document.
+             getElementById('primarycontact_number').value;
+
+  }
+
+  else
+  {
+    document.getElementById('permanenteid').value="";
+    document.getElementById('permanentAddress1').value="";
+    document.getElementById('permanentAddress2').value="";
+    document.getElementById('permanentzip').value="";
+    document.getElementById('permanentcity').value="";
+    document.getElementById('permanentcountry').value="";
+    document.getElementById('permanentcontact_number').value="";
+  }
+}
+</script>
+</body>
+</html>
